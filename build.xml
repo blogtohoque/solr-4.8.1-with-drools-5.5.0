@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="solr-business-rules-1.0-solr-4.6.0-without-maven">
+	<property environment="env" />
+	<property name="solr-business-rules-tests-1.0-solr-4.6.0-without-maven.location" value="../solr-business-rules-tests-1.0-solr-4.6.0-without-maven" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="project-name" value="solr-business-rules-1.0-solr-4.6.0-version-1.0.0" />
+
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	<path id="solr-business-rules-1.0-solr-4.6.0-without-maven.classpath">
+		<pathelement location="bin" />
+		<pathelement location="lib/solr-core-4.8-SNAPSHOT.jar" />
+		<pathelement location="lib/solr-solrj-4.8-SNAPSHOT.jar" />
+		<pathelement location="lib/slf4j-api-1.7.6.jar" />
+		<pathelement location="lib/slf4j-log4j12-1.7.6.jar" />
+		<pathelement location="lib/lucene-core-4.8.1.jar" />
+		<pathelement location="lib/lucene-queries-4.8.1.jar" />
+		<pathelement location="lib/drools-core-5.5.0.Final.jar" />
+		<pathelement location="lib/knowledge-api-5.5.0.Final.jar" />
+		<pathelement location="lib/ecj-4.5.1.jar" />
+	</path>
+	<path id="jar-project-classpath">
+		<fileset dir="lib" includes="*.jar" />
+		<!--
+		<fileset dir="${tomcat-home}/bin" includes="*.jar" />
+		<fileset dir="${tomcat-home}/common/lib" includes="*.jar" />
+		<fileset dir="${tomcat-home}/server/lib" includes="*.jar" />
+		-->
+	</path>
+	<target name="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<!--
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+	-->
+	<target depends="clean" name="cleanall" />
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects" />
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="solr-business-rules-1.0-solr-4.6.0-without-maven.classpath" />
+		</javac>
+	</target>
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+		<ant antfile="build.xml" dir="${solr-business-rules-tests-1.0-solr-4.6.0-without-maven.location}" inheritAll="false" target="clean" />
+		<ant antfile="build.xml" dir="${solr-business-rules-tests-1.0-solr-4.6.0-without-maven.location}" inheritAll="false" target="build" />
+	</target>
+
+	<!--code starts by hoque -->
+	<target name="clean">
+		<delete dir="bin" />
+		<mkdir dir="bin" />
+	</target>
+
+	<target name="copy-non-java-files">
+		<copy todir="bin" includeemptydirs="false">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="compile-jar-classes" depends="clean,copy-non-java-files">
+		<javac srcdir="src" destdir="bin" classpathref="jar-project-classpath" />
+	</target>
+
+	<target name="clean-jar">
+		<delete dir="build" />
+		<mkdir dir="build" />
+	</target>
+
+	<target name="jar">
+		<jar basedir="bin" destfile="build/${project-name}.jar">
+			<manifest>
+				<attribute name="Built-By" value="${builder}" />
+				<attribute name="Built-On" value="${build-info.current-date}" />
+				<attribute name="Built-At" value="${build-info.current-time}" />
+			</manifest>
+		</jar>
+	</target>
+	<target name="build-jar">
+		<antcall target="compile-jar-classes" />
+		<antcall target="clean-jar" />
+		<antcall target="jar" />
+	</target>
+</project>
