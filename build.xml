@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="solr-business-rules-tests-1.0-solr-4.6.0-without-maven">
+	<property environment="env" />
+	<property name="junit.output.dir" value="junit" />
+	<property name="solr-business-rules-1.0-solr-4.6.0-without-maven.location" value="../solr-business-rules-1.0-solr-4.6.0-without-maven" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="project-name" value="solr-business-rules-tests-1.0-solr-4.6.0-version-1.0.0" />
+	
+	<property name="target" value="1.7" />
+	<property name="source" value="1.7" />
+	
+	<path id="solr-business-rules-1.0-solr-4.6.0-without-maven.classpath">
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/bin" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/solr-core-4.8-SNAPSHOT.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/solr-solrj-4.8-SNAPSHOT.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/slf4j-api-1.7.6.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/slf4j-log4j12-1.7.6.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/lucene-core-4.8.1.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/lucene-queries-4.8.1.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/drools-core-5.5.0.Final.jar" />
+		<pathelement location="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}/lib/knowledge-api-5.5.0.Final.jar" />
+	</path>
+	
+	<path id="jar-project-classpath">
+			<fileset dir="lib" includes="*.jar" />
+			<!--
+			<fileset dir="${tomcat-home}/bin" includes="*.jar" />
+			<fileset dir="${tomcat-home}/common/lib" includes="*.jar" />
+			<fileset dir="${tomcat-home}/server/lib" includes="*.jar" />
+			-->
+		</path>
+	<path id="solr-business-rules-tests-1.0-solr-4.6.0-without-maven.classpath">
+		<pathelement location="lib/lucene-test-framework-4.8.1.jar" />
+		<pathelement location="lib/randomizedtesting-runner-2.1.3.jar" />
+		<pathelement location="lib/solr-test-framework-4.8.1.jar" />
+		<pathelement location="bin" />
+		<pathelement location="lib/drools-core-5.5.0.Final.jar" />
+		<pathelement location="lib/knowledge-api-5.5.0.Final.jar" />
+		<pathelement location="lib/lucene-queries-4.8.1.jar" />
+		<pathelement location="lib/slf4j-api-1.7.6.jar" />
+		<pathelement location="lib/slf4j-log4j12-1.7.6.jar" />
+		<pathelement location="lib/solr-core-4.8-SNAPSHOT.jar" />
+		<pathelement location="lib/solr-solrj-4.8-SNAPSHOT.jar" />
+		<pathelement location="lib/junit-4.10.jar" />
+		<pathelement location="lib/testng-6.8.8.jar" />
+		<path refid="solr-business-rules-1.0-solr-4.6.0-without-maven.classpath" />
+		<pathelement location="lib/lucene-codecs-4.8.1.jar" />
+		<pathelement location="lib/log4j-1.2.16.jar" />
+		<pathelement location="lib/commons-io-2.1.jar" />
+		<pathelement location="lib/httpclient-4.3.1.jar" />
+		<pathelement location="lib/httpcore-4.3.jar" />
+		<pathelement location="lib/httpmime-4.3.1.jar" />
+		<pathelement location="lib/jcl-over-slf4j-1.7.6.jar" />
+		<pathelement location="lib/jul-to-slf4j-1.7.6.jar" />
+		<pathelement location="lib/noggit-0.5.jar" />
+		<pathelement location="lib/wstx-asl-3.2.7.jar" />
+		<pathelement location="lib/zookeeper-3.4.6.jar" />
+		<pathelement location="lib/lucene-core-4.8.1.jar" />
+	</path>
+	<target name="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<!--
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    -->
+	<target depends="clean" name="cleanall">
+		<ant antfile="build.xml" dir="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}" inheritAll="false" target="clean" />
+	</target>
+	<target depends="build-subprojects,build-project" name="build" />
+	<target name="build-subprojects">
+		<ant antfile="build.xml" dir="${solr-business-rules-1.0-solr-4.6.0-without-maven.location}" inheritAll="false" target="build-project" />
+	</target>
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src" />
+			<classpath refid="solr-business-rules-tests-1.0-solr-4.6.0-without-maven.classpath" />
+		</javac>
+	</target>
+	<target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects" />
+	<target name="LicenseTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="com.lucid.lwx.license.LicenseTest" todir="${junit.output.dir}" />
+			<jvmarg line="-ea" />
+			<classpath refid="solr-business-rules-tests-1.0-solr-4.6.0-without-maven.classpath" />
+		</junit>
+	</target>
+	<target name="BasicRulesTest">
+		<mkdir dir="${junit.output.dir}" />
+		<junit fork="yes" printsummary="withOutAndErr">
+			<formatter type="xml" />
+			<test name="com.lucid.rules.BasicRulesTest" todir="${junit.output.dir}" />
+			<jvmarg line="-ea" />
+			<classpath refid="solr-business-rules-tests-1.0-solr-4.6.0-without-maven.classpath" />
+		</junit>
+	</target>
+	<target name="junitreport">
+		<junitreport todir="${junit.output.dir}">
+			<fileset dir="${junit.output.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${junit.output.dir}" />
+		</junitreport>
+	</target>
+	<!--code starts by hoque -->
+	<target name="clean">
+		<delete dir="bin" />
+		<mkdir dir="bin" />
+	</target>
+
+	<target name="copy-non-java-files">
+		<copy todir="bin" includeemptydirs="false">
+			<fileset dir="src" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="compile-jar-classes" depends="clean,copy-non-java-files">
+		<javac srcdir="src" destdir="bin" classpathref="jar-project-classpath" />
+	</target>
+
+	<target name="clean-jar">
+		<delete dir="build" />
+		<mkdir dir="build" />
+	</target>
+
+	<target name="jar">
+		<jar basedir="bin" destfile="build/${project-name}.jar">
+			<manifest>
+				<attribute name="Built-By" value="${builder}" />
+				<attribute name="Built-On" value="${build-info.current-date}" />
+				<attribute name="Built-At" value="${build-info.current-time}" />
+			</manifest>
+		</jar>
+	</target>
+	<target name="build-jar">
+		<antcall target="compile-jar-classes" />
+		<antcall target="clean-jar" />
+		<antcall target="jar" />
+	</target>
+</project>
